@@ -38,7 +38,10 @@ function resize() {
   const verticalHalfFov = THREE.MathUtils.degToRad(camera.fov / 2);
   const horizontalHalfFov = Math.atan(Math.tan(verticalHalfFov) * camera.aspect);
   const limitingHalfFov = Math.min(verticalHalfFov, horizontalHalfFov);
-  camera.position.z = Math.max(10, 3.4 / Math.sin(limitingHalfFov));
+  const isPhone = width <= 700;
+  // Change 0.88 to zoom more (< 0.88) or less (> 0.88) on phones.
+  const phoneZoom = isPhone ? 0.64 : 0.45;
+  camera.position.z = Math.max(isPhone ? 8.8 : 10, (3.4 / Math.sin(limitingHalfFov)) * phoneZoom);
   camera.updateProjectionMatrix();
   renderer.setSize(width,height,false);
 }
