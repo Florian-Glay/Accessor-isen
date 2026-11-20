@@ -30,7 +30,19 @@ new GLTFLoader().load(modelUrl, gltf => {
   group.add(model); loaderLabel.remove();
 }, undefined, () => { loaderLabel.remove(); fallback.hidden = false; });
 
-function resize() { const {width,height} = container.getBoundingClientRect(); camera.aspect=width/height; camera.updateProjectionMatrix(); renderer.setSize(width,height,false); }
+function resize() {
+  const {width,height} = container.getBoundingClientRect();
+  if (!width || !height) return;
+  camera.aspect = width / height;
+  // Reserve enough room for the exploded assembly, even when rotated sideways.
+  const verticalHalfFov = THREE.MathUtils.degToRad(camera.fov / 2);
+  const horizontalHalfFov = Math.atan(Math.tan(verticalHalfFov) * camera.aspect);
+  const limitingHalfFov = Math.min(verticalHalfFov, horizontalHalfFov);
+  camera.position.z = Math.max(10, 3.4 / Math.sin(limitingHalfFov));
+  camera.updateProjectionMatrix();
+  renderer.setSize(width,height,false);
+}
+new ResizeObserver(resize).observe(container);
 addEventListener('resize', resize); resize();
 function markAction() { hasInteracted = true; lastTime=performance.now(); if (hint) hint.style.opacity='0'; }
 container.addEventListener('pointerdown', e => { dragging=true; pointerX=e.clientX; container.setPointerCapture(e.pointerId); markAction(); });

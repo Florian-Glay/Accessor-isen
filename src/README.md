@@ -9,3 +9,9 @@ Vitrine interactive d’une manette 3D, prête pour GitHub Pages.
 3. Le workflow `.github/workflows/deploy-pages.yml` publie automatiquement le contenu de `dist/`.
 
 Le modèle source est servi depuis `dist/assets/game-controller.glb`. Le visualiseur est construit avec Three.js chargé depuis jsDelivr : aucune étape de compilation ni dépendance à installer.
+
+commande pour publier :
+
+git add src .github package.json package-lock.json vite.config.js .gitignore
+git commit -m "Mettre à jour le site et son animation"
+git push origin main
