@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#edf4f8" />
+    <meta name="description" content="Explorez une manette de jeu en 3D." />
+    <title>Controller / 01 — Expérience 3D</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="./assets/index-BEcQPt8b.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Va58Xpqf.css">
+  </head>
+  <body>
+    <main class="experience">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="Controller 01, accueil"><span class="brand-mark"></span>CONTROLLER / 01</a>
+        <span class="status"><i></i> MODÈLE INTERACTIF</span>
+      </header>
+
+      <section class="stage" id="top" aria-label="Visualiseur 3D de manette">
+        <div class="grid" aria-hidden="true"></div>
+        <div class="glow glow-one" aria-hidden="true"></div>
+        <div class="glow glow-two" aria-hidden="true"></div>
+        <div id="viewer" class="viewer" role="application" aria-label="Manette 3D. Faites glisser horizontalement pour la faire tourner.">
+          <div class="loader" id="loader"><span></span>CHARGEMENT DU MODÈLE</div>
+          <p class="fallback" id="fallback" hidden>Le modèle 3D n’a pas pu être chargé.</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
